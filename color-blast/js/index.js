@@ -141,7 +141,7 @@ var Game = {
   	this.isGameOver = true;
   	this.clear();
   	var message = "Game Over";
-  	var message2 = "Score: " + Game.score;
+  	var message2 = "Score: " + You scored;
   	var message3 = "Click or press Spacebar to Play Again";
   	this.pause();
   	this.ctx.fillStyle = "white";
@@ -211,7 +211,7 @@ var Player = function(){
 	this.movingRight = false;
 	this.speed = 8;
 	this.invincible = false;
-	this.color = "white";
+	this.color = "green";
 };
 
 
@@ -270,7 +270,7 @@ var Bullet = function(x){
 	this.vy = 8;
 	this.index = Game.bulletIndex;
 	this.active = true;
-	this.color = "white";
+	this.color = "green";
 	
 };
 
@@ -294,7 +294,7 @@ Bullet.prototype.update = function(){
 
 
 var Enemy = function(){
-	this.width = 60;
+	this.width = 45;
 	this.height = 20;
 	this.x = Game.random(0, (Game.c.width - this.width));
 	this.y = Game.random(10, 40);
