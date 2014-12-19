@@ -20,11 +20,11 @@ var Game = {
 		this.enemyBulletIndex = 0;
 		this.enemyIndex = 0;
 		this.particleIndex = 0;
-		this.maxParticles = 50;
-		this.maxEnemies = 10;
+		this.maxParticles = 10;
+		this.maxEnemies = 6;
 		this.enemiesAlive = 0;
 		this.currentFrame = 0;
-		this.maxLives = 1000;
+		this.maxLives = 3;
 		this.life = 0;
 		this.binding();
 		this.player = new Player();
@@ -141,7 +141,7 @@ var Game = {
   	this.isGameOver = true;
   	this.clear();
   	var message = "Game Over";
-  	var message2 = "Score: " + You scored;
+  	var message2 = "Score: " + Game.score;
   	var message3 = "Click or press Spacebar to Play Again";
   	this.pause();
   	this.ctx.fillStyle = "white";
@@ -204,14 +204,14 @@ var Game = {
 
 var Player = function(){
 	this.width = 60;
-	this.height = 15;
+	this.height = 20;
 	this.x = Game.c.width/2 - this.width/2;
 	this.y = Game.c.height - this.height;
 	this.movingLeft = false;
 	this.movingRight = false;
 	this.speed = 8;
 	this.invincible = false;
-	this.color = "red";
+	this.color = "white";
 };
 
 
@@ -263,14 +263,14 @@ Player.prototype.shoot = function(){
 
 
 var Bullet = function(x){  
-	this.width = 3;
-	this.height = 10;
+	this.width = 8;
+	this.height = 20;
 	this.x = x;
 	this.y = Game.c.height - 10;
 	this.vy = 8;
 	this.index = Game.bulletIndex;
 	this.active = true;
-	this.color = "green";
+	this.color = "white";
 	
 };
 
@@ -294,7 +294,7 @@ Bullet.prototype.update = function(){
 
 
 var Enemy = function(){
-	this.width = 45;
+	this.width = 60;
 	this.height = 20;
 	this.x = Game.random(0, (Game.c.width - this.width));
 	this.y = Game.random(10, 40);
