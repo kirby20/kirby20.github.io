@@ -20,11 +20,11 @@ var Game = {
 		this.enemyBulletIndex = 0;
 		this.enemyIndex = 0;
 		this.particleIndex = 0;
-		this.maxParticles = 10;
-		this.maxEnemies = 6;
+		this.maxParticles = 50;
+		this.maxEnemies = 10;
 		this.enemiesAlive = 0;
 		this.currentFrame = 0;
-		this.maxLives = 3;
+		this.maxLives = 1000;
 		this.life = 0;
 		this.binding();
 		this.player = new Player();
@@ -204,14 +204,14 @@ var Game = {
 
 var Player = function(){
 	this.width = 60;
-	this.height = 20;
+	this.height = 15;
 	this.x = Game.c.width/2 - this.width/2;
 	this.y = Game.c.height - this.height;
 	this.movingLeft = false;
 	this.movingRight = false;
 	this.speed = 8;
 	this.invincible = false;
-	this.color = "white";
+	this.color = "dark red";
 };
 
 
@@ -263,14 +263,14 @@ Player.prototype.shoot = function(){
 
 
 var Bullet = function(x){  
-	this.width = 8;
+	this.width = 3;
 	this.height = 20;
 	this.x = x;
 	this.y = Game.c.height - 10;
 	this.vy = 8;
 	this.index = Game.bulletIndex;
 	this.active = true;
-	this.color = "white";
+	this.color = "dark red";
 	
 };
 
@@ -294,8 +294,8 @@ Bullet.prototype.update = function(){
 
 
 var Enemy = function(){
-	this.width = 60;
-	this.height = 20;
+	this.width = 50;
+	this.height = 50;
 	this.x = Game.random(0, (Game.c.width - this.width));
 	this.y = Game.random(10, 40);
 	this.vy = Game.random(1, 3) * .1;
@@ -367,8 +367,8 @@ Enemy.prototype.shoot = function(){
 };
 
 var EnemyBullet = function(x, y, color){
-	this.width = 8;
-	this.height = 20;
+	this.width = 5;
+	this.height = 5;
 	this.x = x;
 	this.y = y;
 	this.vy = 6;
@@ -403,8 +403,8 @@ var Particle = function(x, y, color){
     this.id = Game.particleIndex;
     Game.particleIndex++;
     this.life = 0;
-    this.gravity = .05;
-    this.size = 40;
+    this.gravity = .02;
+    this.size = 60;
     this.maxlife = 100;
   }
 
