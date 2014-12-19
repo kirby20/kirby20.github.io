@@ -20,11 +20,11 @@ var Game = {
 		this.enemyBulletIndex = 0;
 		this.enemyIndex = 0;
 		this.particleIndex = 0;
-		this.maxParticles = 10;
-		this.maxEnemies = 6;
+		this.maxParticles = 50;
+		this.maxEnemies = 10;
 		this.enemiesAlive = 0;
 		this.currentFrame = 0;
-		this.maxLives = 3;
+		this.maxLives = 1000;
 		this.life = 0;
 		this.binding();
 		this.player = new Player();
@@ -204,14 +204,14 @@ var Game = {
 
 var Player = function(){
 	this.width = 60;
-	this.height = 20;
+	this.height = 15;
 	this.x = Game.c.width/2 - this.width/2;
 	this.y = Game.c.height - this.height;
 	this.movingLeft = false;
 	this.movingRight = false;
 	this.speed = 8;
 	this.invincible = false;
-	this.color = "green";
+	this.color = "red";
 };
 
 
@@ -263,8 +263,8 @@ Player.prototype.shoot = function(){
 
 
 var Bullet = function(x){  
-	this.width = 8;
-	this.height = 20;
+	this.width = 3;
+	this.height = 10;
 	this.x = x;
 	this.y = Game.c.height - 10;
 	this.vy = 8;
